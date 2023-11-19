@@ -30,3 +30,9 @@ For each example, you also need to pull the AI model with Ollama.
 1. Pull the model: `ollama pull openhermes2.5-mistral` ([reference](https://ollama.ai/library/openhermes2.5-mistral))
 2. Go to http://localhost:3000/openhermes
 3. Code: `app/api/openhermes/route.ts`
+
+### Vicuna
+
+1. Pull the model: `ollama pull vicuna` ([reference](https://ollama.ai/library/vicuna))
+2. Go to http://localhost:3000/vicuna
+3. Code: `app/api/vicuna/route.ts`
