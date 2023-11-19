@@ -1,2 +1,1 @@
-# modelfusion-ollama-nextjs-chatbot-starter
-ModelFusion Ollama Next.js Chatbot starter
+# ModelFusion, Ollama, Vercel AI SDK, and Next.js Chatbot starter
