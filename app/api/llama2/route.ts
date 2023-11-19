@@ -14,7 +14,7 @@ export async function POST(req: Request) {
   // Use ModelFusion to call Ollama:
   const textStream = await streamText(
     new OllamaTextGenerationModel({
-      model: "llama2:7b-chat",
+      model: "llama2:chat",
       maxCompletionTokens: -1, // infinite generation
       temperature: 0,
       raw: true, // use raw inputs and map to prompt format below
