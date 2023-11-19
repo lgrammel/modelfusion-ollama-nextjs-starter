@@ -1,1 +1,1 @@
-# Next.js, Vercel AI SDK and Ollama starter using ModelFusion
+# Next.js, Vercel AI SDK, Ollama & ModelFusion starter
