@@ -1,1 +1,1 @@
-# ModelFusion, Ollama, Vercel AI SDK, and Next.js Chatbot starter
+# Next.js, Vercel AI SDK and Ollama starter using ModelFusion
