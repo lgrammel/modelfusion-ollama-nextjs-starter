@@ -1,6 +1,6 @@
 # Next.js, Vercel AI SDK, Ollama & ModelFusion starter
 
-This starter example shows how to use [Next.js](https://nextjs.org/), the [Vercel AI SDK](https://sdk.vercel.ai/docs), [Ollama](https://ollama.ai/) and [ModelFusion](modelfusion.dev) to create a ChatGPT-like AI-powered streaming chat bot.
+This starter example shows how to use [Next.js](https://nextjs.org/), the [Vercel AI SDK](https://sdk.vercel.ai/docs), [Ollama](https://ollama.ai/) and [ModelFusion](https://modelfusion.dev) to create a ChatGPT-like AI-powered streaming chat bot.
 
 ## Setup
 
