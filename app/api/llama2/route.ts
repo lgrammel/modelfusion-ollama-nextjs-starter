@@ -2,7 +2,7 @@ import { Message, StreamingTextResponse, readableFromAsyncIterable } from "ai";
 import {
   ChatMessage,
   Llama2PromptFormat,
-  OllamaTextGenerationModel,
+  ollama,
   streamText,
 } from "modelfusion";
 
@@ -13,12 +13,14 @@ export async function POST(req: Request) {
 
   // Use ModelFusion to call Ollama:
   const textStream = await streamText(
-    new OllamaTextGenerationModel({
-      model: "llama2:chat",
-      maxCompletionTokens: -1, // infinite generation
-      temperature: 0,
-      raw: true, // use raw inputs and map to prompt format below
-    }).withPromptFormat(Llama2PromptFormat.chat()), // Llama2 prompt
+    ollama
+      .TextGenerator({
+        model: "llama2:chat",
+        maxCompletionTokens: -1, // infinite generation
+        temperature: 0,
+        raw: true, // use raw inputs and map to prompt format below
+      })
+      .withPromptFormat(Llama2PromptFormat.chat()), // Llama2 prompt
     {
       system:
         "You are an AI chat bot. " +

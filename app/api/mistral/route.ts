@@ -1,10 +1,5 @@
 import { Message, StreamingTextResponse, readableFromAsyncIterable } from "ai";
-import {
-  ChatMessage,
-  OllamaTextGenerationModel,
-  TextPromptFormat,
-  streamText,
-} from "modelfusion";
+import { ChatMessage, TextPromptFormat, ollama, streamText } from "modelfusion";
 
 export const runtime = "edge";
 
@@ -13,12 +8,14 @@ export async function POST(req: Request) {
 
   // Use ModelFusion to call Ollama:
   const textStream = await streamText(
-    new OllamaTextGenerationModel({
-      model: "mistral:text",
-      maxCompletionTokens: -1, // infinite generation
-      temperature: 0,
-      raw: true, // use raw inputs and map to prompt format below
-    }).withPromptFormat(TextPromptFormat.chat()), // Plain text prompt
+    ollama
+      .TextGenerator({
+        model: "mistral:text",
+        maxCompletionTokens: -1, // infinite generation
+        temperature: 0,
+        raw: true, // use raw inputs and map to prompt format below
+      })
+      .withPromptFormat(TextPromptFormat.chat()), // Plain text prompt
     {
       system:
         "You are an AI chat bot. " +

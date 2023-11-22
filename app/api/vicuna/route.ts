@@ -1,8 +1,8 @@
 import { Message, StreamingTextResponse, readableFromAsyncIterable } from "ai";
 import {
   ChatMessage,
-  OllamaTextGenerationModel,
   VicunaPromptFormat,
+  ollama,
   streamText,
 } from "modelfusion";
 
@@ -13,12 +13,14 @@ export async function POST(req: Request) {
 
   // Use ModelFusion to call Ollama:
   const textStream = await streamText(
-    new OllamaTextGenerationModel({
-      model: "vicuna",
-      maxCompletionTokens: -1, // infinite generation
-      temperature: 0,
-      raw: true, // use raw inputs and map to prompt format below
-    }).withPromptFormat(VicunaPromptFormat.chat()), // Plain text prompt
+    ollama
+      .TextGenerator({
+        model: "vicuna",
+        maxCompletionTokens: -1, // infinite generation
+        temperature: 0,
+        raw: true, // use raw inputs and map to prompt format below
+      })
+      .withPromptFormat(VicunaPromptFormat.chat()), // Plain text prompt
     {
       system:
         "You are an AI chat bot. " +

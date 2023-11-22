@@ -9,9 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "ai": "2.2.24",
+    "ai": "2.2.25",
     "next": "14.0.3",
-    "modelfusion": ">= 0.73.1",
+    "modelfusion": ">= 0.75.0",
     "react": "18.2.0",
     "react-dom": "^18.2.0"
   },
