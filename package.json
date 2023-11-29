@@ -11,7 +11,7 @@
   "dependencies": {
     "ai": "2.2.25",
     "next": "14.0.3",
-    "modelfusion": ">= 0.80.0",
+    "modelfusion": ">= 0.88.0",
     "react": "18.2.0",
     "react-dom": "^18.2.0"
   },

@@ -1,6 +1,6 @@
 import { Message, StreamingTextResponse, readableFromAsyncIterable } from "ai";
 import {
-  ChatMessage,
+  TextChatMessage,
   Llama2PromptFormat,
   ollama,
   streamText,
@@ -26,11 +26,11 @@ export async function POST(req: Request) {
         "You are an AI chat bot. " +
         "Follow the user's instructions carefully.",
 
-      // map Vercel AI SDK Message to ModelFusion ChatMessage:
+      // map Vercel AI SDK Message to ModelFusion TextChatMessage:
       messages: messages.filter(
         // only user and assistant roles are supported:
         (message) => message.role === "user" || message.role === "assistant"
-      ) as ChatMessage[],
+      ) as TextChatMessage[],
     }
   );
 
