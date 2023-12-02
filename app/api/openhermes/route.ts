@@ -1,4 +1,5 @@
-import { Message, StreamingTextResponse, readableFromAsyncIterable } from "ai";
+import { ModelFusionTextStream } from "@modelfusion/vercel-ai";
+import { Message, StreamingTextResponse } from "ai";
 import {
   ChatMLPromptFormat,
   TextChatMessage,
@@ -35,5 +36,24 @@ export async function POST(req: Request) {
   );
 
   // Return the result using the Vercel AI SDK:
-  return new StreamingTextResponse(readableFromAsyncIterable(textStream));
+  return new StreamingTextResponse(
+    ModelFusionTextStream(
+      textStream,
+      // optional callbacks:
+      {
+        onStart() {
+          console.log("onStart");
+        },
+        onToken(token) {
+          console.log("onToken", token);
+        },
+        onCompletion: () => {
+          console.log("onCompletion");
+        },
+        onFinal(completion) {
+          console.log("onFinal", completion);
+        },
+      }
+    )
+  );
 }
