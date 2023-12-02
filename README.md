@@ -44,7 +44,7 @@ import { ModelFusionTextStream } from "@modelfusion/vercel-ai";
 import { Message, StreamingTextResponse } from "ai";
 import {
   TextChatMessage,
-  VicunaPromptFormat,
+  TextPromptFormat,
   ollama,
   streamText,
 } from "modelfusion";
@@ -58,12 +58,12 @@ export async function POST(req: Request) {
   const textStream = await streamText(
     ollama
       .TextGenerator({
-        model: "vicuna",
+        model: "mistral:text",
         maxCompletionTokens: -1, // infinite generation
         temperature: 0,
         raw: true, // use raw inputs and map to prompt format below
       })
-      .withPromptFormat(VicunaPromptFormat.chat()), // Plain text prompt
+      .withPromptFormat(TextPromptFormat.chat()), // Plain text prompt
     {
       system:
         "You are an AI chat bot. " +
