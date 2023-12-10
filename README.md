@@ -31,6 +31,12 @@ For each example, you also need to pull the AI model with Ollama.
 2. Go to http://localhost:3000/openhermes
 3. Code: `app/api/openhermes/route.ts`
 
+### Neural Chat
+
+1. Pull the model: `ollama pull neural-chat` ([reference](https://ollama.ai/library/neural-chat))
+2. Go to http://localhost:3000/neural-chat
+3. Code: `app/api/neural-chat/route.ts`
+
 ### Vicuna
 
 1. Pull the model: `ollama pull vicuna` ([reference](https://ollama.ai/library/vicuna))
