@@ -1,11 +1,6 @@
 import { ModelFusionTextStream } from "@modelfusion/vercel-ai";
 import { Message, StreamingTextResponse } from "ai";
-import {
-  Llama2PromptFormat,
-  TextChatMessage,
-  ollama,
-  streamText,
-} from "modelfusion";
+import { Llama2Prompt, TextChatMessage, ollama, streamText } from "modelfusion";
 
 export const runtime = "edge";
 
@@ -19,9 +14,9 @@ export async function POST(req: Request) {
         model: "llama2:chat",
         maxCompletionTokens: -1, // infinite generation
         temperature: 0,
-        raw: true, // use raw inputs and map to prompt format below
+        raw: true, // use raw inputs and map to prompt template below
       })
-      .withPromptFormat(Llama2PromptFormat.chat()), // Llama2 prompt
+      .withPromptTemplate(Llama2Prompt.chat()),
     {
       system:
         "You are an AI chat bot. " +

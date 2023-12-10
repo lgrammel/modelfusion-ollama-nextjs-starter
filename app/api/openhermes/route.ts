@@ -1,11 +1,6 @@
 import { ModelFusionTextStream } from "@modelfusion/vercel-ai";
 import { Message, StreamingTextResponse } from "ai";
-import {
-  ChatMLPromptFormat,
-  TextChatMessage,
-  ollama,
-  streamText,
-} from "modelfusion";
+import { ChatMLPrompt, TextChatMessage, ollama, streamText } from "modelfusion";
 
 export const runtime = "edge";
 
@@ -19,9 +14,9 @@ export async function POST(req: Request) {
         model: "openhermes2.5-mistral",
         maxCompletionTokens: -1, // infinite generation
         temperature: 0,
-        raw: true, // use raw inputs and map to prompt format below
+        raw: true, // use raw inputs and map to prompt template below
       })
-      .withPromptFormat(ChatMLPromptFormat.chat()), // ChatML prompt
+      .withPromptTemplate(ChatMLPrompt.chat()),
     {
       system:
         "You are an AI chat bot. " +

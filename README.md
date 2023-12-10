@@ -42,12 +42,7 @@ For each example, you also need to pull the AI model with Ollama.
 ```ts
 import { ModelFusionTextStream } from "@modelfusion/vercel-ai";
 import { Message, StreamingTextResponse } from "ai";
-import {
-  TextChatMessage,
-  TextPromptFormat,
-  ollama,
-  streamText,
-} from "modelfusion";
+import { Llama2Prompt, TextChatMessage, ollama, streamText } from "modelfusion";
 
 export const runtime = "edge";
 
@@ -58,12 +53,12 @@ export async function POST(req: Request) {
   const textStream = await streamText(
     ollama
       .TextGenerator({
-        model: "mistral:text",
+        model: "llama2:chat",
         maxCompletionTokens: -1, // infinite generation
         temperature: 0,
-        raw: true, // use raw inputs and map to prompt format below
+        raw: true, // use raw inputs and map to prompt template below
       })
-      .withPromptFormat(TextPromptFormat.chat()), // Plain text prompt
+      .withPromptTemplate(Llama2Prompt.chat()),
     {
       system:
         "You are an AI chat bot. " +
