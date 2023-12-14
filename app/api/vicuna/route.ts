@@ -16,6 +16,7 @@ export async function POST(req: Request) {
         temperature: 0,
         raw: true, // use raw inputs and map to prompt template below
       })
+      .withTextPrompt()
       .withPromptTemplate(VicunaPrompt.chat()),
     {
       system:
