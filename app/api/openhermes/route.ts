@@ -12,7 +12,7 @@ export async function POST(req: Request) {
     ollama
       .TextGenerator({
         model: "openhermes2.5-mistral",
-        maxCompletionTokens: -1, // infinite generation
+        maxGenerationTokens: -1, // infinite generation
         temperature: 0,
         raw: true, // use raw inputs and map to prompt template below
       })
