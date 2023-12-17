@@ -1,6 +1,6 @@
 import { ModelFusionTextStream } from "@modelfusion/vercel-ai";
 import { Message, StreamingTextResponse } from "ai";
-import { TextChatMessage, VicunaPrompt, ollama, streamText } from "modelfusion";
+import { TextChatMessage, ollama, streamText } from "modelfusion";
 
 export const runtime = "edge";
 
@@ -9,15 +9,7 @@ export async function POST(req: Request) {
 
   // Use ModelFusion to call Ollama:
   const textStream = await streamText(
-    ollama
-      .TextGenerator({
-        model: "vicuna",
-        maxGenerationTokens: -1, // infinite generation
-        temperature: 0,
-        raw: true, // use raw inputs and map to prompt template below
-      })
-      .withTextPrompt()
-      .withPromptTemplate(VicunaPrompt.chat()),
+    ollama.ChatTextGenerator({ model: "llama2:chat" }).withChatPrompt(),
     {
       system:
         "You are an AI chat bot. " +

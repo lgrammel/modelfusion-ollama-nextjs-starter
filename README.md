@@ -16,39 +16,15 @@ For each example, you also need to pull the AI model with Ollama.
 ### Llama 2
 
 1. Pull the model: `ollama pull llama2:chat` ([reference](https://ollama.ai/library/llama2))
-2. Go to http://localhost:3000/llama2
-3. Code: `app/api/llama/route.ts`
-
-### Mistral
-
-1. Pull the model: `ollama pull mistral:text` ([reference](https://ollama.ai/library/mistral))
-2. Go to http://localhost:3000/mistral
-3. Code: `app/api/mistral/route.ts`
-
-### OpenHermes 2.5
-
-1. Pull the model: `ollama pull openhermes2.5-mistral` ([reference](https://ollama.ai/library/openhermes2.5-mistral))
-2. Go to http://localhost:3000/openhermes
-3. Code: `app/api/openhermes/route.ts`
-
-### Neural Chat
-
-1. Pull the model: `ollama pull neural-chat` ([reference](https://ollama.ai/library/neural-chat))
-2. Go to http://localhost:3000/neural-chat
-3. Code: `app/api/neural-chat/route.ts`
-
-### Vicuna
-
-1. Pull the model: `ollama pull vicuna` ([reference](https://ollama.ai/library/vicuna))
-2. Go to http://localhost:3000/vicuna
-3. Code: `app/api/vicuna/route.ts`
+2. Go to http://localhost:3000/
+3. Code: `app/api/chat/route.ts`
 
 ## Example Route
 
 ```ts
 import { ModelFusionTextStream } from "@modelfusion/vercel-ai";
 import { Message, StreamingTextResponse } from "ai";
-import { Llama2Prompt, TextChatMessage, ollama, streamText } from "modelfusion";
+import { TextChatMessage, ollama, streamText } from "modelfusion";
 
 export const runtime = "edge";
 
@@ -57,15 +33,7 @@ export async function POST(req: Request) {
 
   // Use ModelFusion to call Ollama:
   const textStream = await streamText(
-    ollama
-      .TextGenerator({
-        model: "llama2:chat",
-        maxGenerationTokens: -1, // infinite generation
-        temperature: 0,
-        raw: true, // use raw inputs and map to prompt template below
-      })
-      .withTextPrompt()
-      .withPromptTemplate(Llama2Prompt.chat()),
+    ollama.ChatTextGenerator({ model: "llama2:chat" }).withChatPrompt(),
     {
       system:
         "You are an AI chat bot. " +
