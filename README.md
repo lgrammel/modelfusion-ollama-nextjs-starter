@@ -5,19 +5,12 @@ This starter example shows how to use [Next.js](https://nextjs.org/), the [Verce
 ## Setup
 
 1. Install [Ollama](https://ollama.ai/) on your machine.
-2. Clone the repository: `git clone https://github.com/lgrammel/modelfusion-ollama-nextjs-starter.git`
-3. Install dependencies: `npm install`
-4. Start the development server: `npm run dev`
-
-For each example, you also need to pull the AI model with Ollama.
-
-## Examples
-
-### Llama 2
-
 1. Pull the model: `ollama pull llama2:chat` ([reference](https://ollama.ai/library/llama2))
-2. Go to http://localhost:3000/
-3. Code: `app/api/chat/route.ts`
+1. Clone the repository: `git clone https://github.com/lgrammel/modelfusion-ollama-nextjs-starter.git`
+1. Install dependencies: `npm install`
+1. Start the development server: `npm run dev`
+1. Go to http://localhost:3000/
+1. Code: `app/api/chat/route.ts`
 
 ## Example Route
 
