@@ -15,9 +15,9 @@ This starter example shows how to use [Next.js](https://nextjs.org/), the [Verce
 ## Example Route
 
 ```ts
-import { ModelFusionTextStream } from "@modelfusion/vercel-ai";
+import { ModelFusionTextStream, asChatMessages } from "@modelfusion/vercel-ai";
 import { Message, StreamingTextResponse } from "ai";
-import { ChatMessage, ollama, streamText } from "modelfusion";
+import { ollama, streamText } from "modelfusion";
 
 export const runtime = "edge";
 
@@ -33,10 +33,7 @@ export async function POST(req: Request) {
         "Follow the user's instructions carefully.",
 
       // map Vercel AI SDK Message to ModelFusion ChatMessage:
-      messages: messages.filter(
-        // only user and assistant roles are supported:
-        (message) => message.role === "user" || message.role === "assistant"
-      ) as ChatMessage[],
+      messages: asChatMessages(messages),
     }
   );
 
